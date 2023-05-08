@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Поиск книги</title>
+    <link href="/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="DenisStyle">
 
 
 <form th:method="POST">
@@ -14,9 +15,9 @@
 </form>
 
 <div th:if="${findBooks}">
-    <p th:if="${findBooks.isEmpty()}" style="background: #f69d9d">Книг не найдено!</p>
+    <p th:if="${findBooks.isEmpty()}" style="background: #5a5e55">Книг не найдено!</p>
 
-    <div th:if="${!findBooks.isEmpty()}" th:each="findBook : ${findBooks}" style="background: #9be08e">
+    <div th:if="${!findBooks.isEmpty()}" th:each="findBook : ${findBooks}" style="background: #5a5e55">
         <hr>
         <p th:text="'Название книги: ' + ${findBook.getTitle()}">
         <p th:text="'Автор книги: ' + ${findBook.getAuthor()}">

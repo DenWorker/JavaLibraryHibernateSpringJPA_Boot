@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Информация о человеке</title>
+    <link href="/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="DenisStyle">
 
 <h1 th:text="${person.getFullName()}">value</h1>
 <ul>
@@ -15,16 +16,12 @@
 
 <p th:if="${person_books.isEmpty()}">Человек не взял ни одной книги!</p>
 <div th:if="${!person_books.isEmpty()}">
-    <hr>
+
     <b>Книги:</b>
     <br>
 
     <table border="1">
         <colgroup>
-            <col span="2" style="background:Khaki">
-            <col style="background-color:LightCyan">
-            <col style="background-color:#9be08e">
-            <col style="background-color: #8cb7ee">
         </colgroup>
         <thead>
         <tr>
@@ -37,16 +34,19 @@
         </thead>
 
         <tbody th:each="book : ${person_books}">
-        <th th:text="${book.getId()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
-        <th th:text="${book.getTitle()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
-        <th th:text="${book.getAuthor()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
-        <th th:text="${book.getReleaseDate()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
-        <th th:text="${book.getTakingBook()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
+        <th th:text="${book.getId()}" th:style="${book.isDelay()}? 'color: #de5b2f' : 'color: #6eee3b'">value</th>
+        <th th:text="${book.getTitle()}" th:style="${book.isDelay()}? 'color: #de5b2f' : 'color: #6eee3b'">value</th>
+        <th th:text="${book.getAuthor()}" th:style="${book.isDelay()}? 'color: #de5b2f' : 'color: #6eee3b'">value</th>
+        <th th:text="${book.getReleaseDate()}" th:style="${book.isDelay()}? 'color: #de5b2f' : 'color: #6eee3b'">
+            value
+        </th>
+        <th th:text="${book.getTakingBook()}" th:style="${book.isDelay()}? 'color: #de5b2f' : 'color: #6eee3b'">value
+        </th>
         </tbody>
     </table>
 </div>
 
-<hr>
+
 <br>
 <form th:method="GET" th:action="@{/people}">
     <input type="submit" value="На страницу людей"/>

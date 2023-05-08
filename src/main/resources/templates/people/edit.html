@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактирование человека</title>
+    <link href="/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="DenisStyle">
 
 <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
 

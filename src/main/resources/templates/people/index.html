@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>БД людей</title>
+    <link href="/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="DenisStyle">
 
 <div th:each="person : ${people}">
     <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFullName()}">value</a>
@@ -12,7 +13,6 @@
         <li th:text="'ID: ' + ${person.getId()}">user</li>
         <li th:text="'Год рождения: ' + ${person.getYearOfBorn()}">user</li>
     </ul>
-    <hr>
 </div>
 
 <form th:method="GET" th:action="@{/people/new}">
@@ -24,10 +24,6 @@
     <input type="submit" value="На страницу книг"/>
 </form>
 
-<br>
-<form th:method="GET" th:action="@{/}">
-    <input type="submit" value="На главное меню"/>
-</form>
 
 </body>
 </html>

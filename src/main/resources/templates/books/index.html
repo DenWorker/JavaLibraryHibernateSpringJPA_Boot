@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>БД книг</title>
-    <link rel="stylesheet">
+    <link href="/style.css" rel="stylesheet" type="text/css"/>
 
 </head>
-<body>
+<body class="DenisStyle">
 
 <div th:each="book : ${books}">
     <a th:href="@{/books/{id}(id=${book.getId})}" th:text="${book.getTitle()}">value</a>
@@ -15,8 +15,6 @@
         <li th:text="'Автор: ' + ${book.getAuthor()}">user</li>
         <li th:text="'Дата выпуска: ' + ${book.getReleaseDate()}">user</li>
     </ul>
-
-    <hr>
 </div>
 
 <br/>
@@ -55,10 +53,6 @@
     <input type="submit" value="На страницу людей"/>
 </form>
 
-<br>
-<form th:method="GET" th:action="@{/}">
-    <input type="submit" value="На главное меню"/>
-</form>
 
 </body>
 </html>
