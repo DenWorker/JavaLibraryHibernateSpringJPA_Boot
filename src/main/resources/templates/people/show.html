@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о человеке</title>
+</head>
+<body>
+
+<h1 th:text="${person.getFullName()}">value</h1>
+<ul>
+    <li th:text="'ID: ' + ${person.getId()}">user</li>
+    <li th:text="'Год рождения: ' + ${person.getYearOfBorn()}">user</li>
+</ul>
+<br>
+
+<p th:if="${person_books.isEmpty()}">Человек не взял ни одной книги!</p>
+<div th:if="${!person_books.isEmpty()}">
+    <hr>
+    <b>Книги:</b>
+    <br>
+
+    <table border="1">
+        <colgroup>
+            <col span="2" style="background:Khaki">
+            <col style="background-color:LightCyan">
+            <col style="background-color:#9be08e">
+            <col style="background-color: #8cb7ee">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>Id книги</th>
+            <th>Название книги</th>
+            <th>Автор книги</th>
+            <th>Дата выпуска</th>
+            <th>Когда была взята</th>
+        </tr>
+        </thead>
+
+        <tbody th:each="book : ${person_books}">
+        <th th:text="${book.getId()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
+        <th th:text="${book.getTitle()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
+        <th th:text="${book.getAuthor()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
+        <th th:text="${book.getReleaseDate()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
+        <th th:text="${book.getTakingBook()}" th:style="${book.isDelay()}? 'color: red' : 'color: green'">value</th>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+<br>
+<form th:method="GET" th:action="@{/people}">
+    <input type="submit" value="На страницу людей"/>
+</form>
+
+<br>
+<form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+    <input type="submit" value="Редактировать данные человека"/>
+</form>
+
+<br>
+<form th:method="DELETE" th:action="@{/people/{id}/delete(id=${person.getId()})}">
+    <input type="submit" value="Удалить человека"/>
+</form>
+
+</body>
+</html>
